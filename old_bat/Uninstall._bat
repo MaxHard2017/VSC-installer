@@ -1,0 +1,58 @@
+@ECHO OFF
+@ECHO --------------------------------------------------------------------------
+@ECHO  Uninstalling Visual Studio Code and other staf from %INSTALLDIR%:
+@ECHO --------------------------------------------------------------------------
+@ECHO    Press [1] button to uninstall Visual Studio Code
+@ECHO    Press [2] button to uninstall MinGWx86_64-8.1.0
+@ECHO    Press [3] button to uninstall Python3
+@ECHO    Press [A] button to uninstall Visual Studio Code and MinGWx86_64-8.1.0
+SET /P NAME= " Your choice : "
+
+CLS
+Color 6
+
+IF /I "%NAME%"=="1" (
+@ECHO ------------------------------------
+@ECHO  Uninstalling Visual Studio Code...
+@ECHO ------------------------------------
+rd /s %VSCHOME:~1%
+GOTO FINISHLABEL)
+
+IF /I "%NAME%"=="2" (
+@ECHO ------------------------------------
+@ECHO  Uninstalling MinGWx86_64-8.1.0...
+@ECHO ------------------------------------
+rd /s %MINGWHOME:~1%
+GOTO FINISHLABEL)
+
+IF /I "%NAME%"=="3" (
+@ECHO ------------------------------------
+@ECHO  Uninstalling Python3...
+@ECHO ------------------------------------
+rd /s %PYTHONHOME:~1%
+GOTO FINISHLABEL)
+
+ 
+
+IF /I "%NAME%"=="A" (
+@ECHO ------------------------------------
+@ECHO  Uninstalling VSC, MinGW and Python3...
+@ECHO ------------------------------------
+rd /s %MINGWHOME:~1%
+rd /s %VSCHOME:~1%
+rd /s %PYTHONHOME:~1%
+del /Q Uninstall.bat
+GOTO FINISHLABEL) ELSE (
+
+@ECHO ------------------------------------
+@ECHO     Uninstallatioln canceled!
+@ECHO ------------------------------------
+PAUSE
+EXIT)
+
+:FINISHLABEL
+@ECHO ------------------------------------
+@ECHO   Uninstallatioln process complete
+@ECHO ------------------------------------
+
+PAUSE
